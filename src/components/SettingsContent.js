@@ -86,25 +86,7 @@ const SettingsContent = ({ section }) => {
 
   const handleColorChange = (color) => {
     setCurrentColor(color.hex);
-    switch (currentColorType) {
-      case 'primary':
-        setPrimaryColor(color.hex);
-        break;
-      case 'secondary':
-        setSecondaryColor(color.hex);
-        break;
-      case 'neutral':
-        setNeutralColor(color.hex);
-        break;
-      case 'mainText':
-        setMainTextColor(color.hex);
-        break;
-      case 'neutralText':
-        setNeutralTextColor(color.hex);
-        break;
-      default:
-        break;
-    }
+    
   };
 
   const handleClose = () => {
@@ -113,6 +95,25 @@ const SettingsContent = ({ section }) => {
 
   const handleSaveChanges = () => {
     // Here you would save the color changes to your backend
+    switch (currentColorType) {
+      case 'primary':
+        setPrimaryColor(currentColor);
+        break;
+      case 'secondary':
+        setSecondaryColor(currentColor);
+        break;
+      case 'neutral':
+        setNeutralColor(currentColor);
+        break;
+      case 'mainText':
+        setMainTextColor(currentColor);
+        break;
+      case 'neutralText':
+        setNeutralTextColor(currentColor);
+        break;
+      default:
+        break;
+    }
     setOpenColorPicker(false);
   };
 
