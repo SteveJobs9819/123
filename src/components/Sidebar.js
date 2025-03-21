@@ -38,8 +38,7 @@ const Sidebar = ({
     let firstSectionId = '';
     
     // Clear all open sections when changing tabs
-    setOpenSections({});
-    
+    // setOpenSections({});
     switch (activeTab) {
       case 'Settings':
         newSections = settingSections;
@@ -58,18 +57,19 @@ const Sidebar = ({
     
     setActiveSections(newSections);
     
+    // console.log('useEffect->', activeTab, firstSectionId);
     // Auto-select first section
     if (firstSectionId) {
-      setSelectedSection(firstSectionId);
+      onSelect(firstSectionId);
       
       // Open only the first section
-      setOpenSections({
-        [firstSectionId]: true
-      });
+      // setOpenSections({
+      //   [firstSectionId]: true
+      // });
       
-      onSelect(firstSectionId);
+      // onSelect(firstSectionId);
     }
-  }, [activeTab, onSelect]);
+  }, [activeTab]);
 
   const handleStoreChange = (event) => {
     onStoreChange(event.target.value);
@@ -80,17 +80,7 @@ const Sidebar = ({
   };
 
   const toggleSection = (sectionId) => {
-    // First close all sections
-    const newOpenSections = {};
-    
-    // Then open only the clicked section
-    newOpenSections[sectionId] = true;
-    
-    setOpenSections(newOpenSections);
-    setSelectedSection(sectionId);
     onSelect(sectionId);
-    
-    console.log('Toggled section:', sectionId);
   };
 
   return (
@@ -193,6 +183,7 @@ const Sidebar = ({
                   p:0,
                   mb:1.5,
                   color: 'black',
+                  bgcolor: selectedSection === section.id ? "action.selected" : "transparent", // Change background color when selected
                   '&:hover': {
                     bgcolor: 'action.hover',
                   },

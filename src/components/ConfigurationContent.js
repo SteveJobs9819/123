@@ -264,17 +264,17 @@ const StorefrontForm = () => (
 const ConfigurationContent = ({ section }) => {
   const getConfigContent = () => {
     switch (section) {
-      case 'storefront':
+      case 'Storefront Details':
         return <StorefrontForm />;
-      case 'egalaxy':
+      case 'eGalaxy Config':
         return <Typography>eGalaxy Configuration Form</Typography>;
-      case 'payment':
+      case 'Payment Processing':
         return <Typography>Payment Processing Form</Typography>;
-      case 'recaptcha':
+      case 'reCAPTCHA v3':
         return <Typography>reCAPTCHA v3 Form</Typography>;
-      case 'analytics':
+      case 'Google Analytics':
         return <Typography>Google Analytics Form</Typography>;
-      case 'localizations':
+      case 'Localizations':
         return <Typography>Localizations Form</Typography>;
       default:
         return <Typography>Please select a section</Typography>;

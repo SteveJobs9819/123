@@ -45,6 +45,7 @@ function App() {
           selectedStore={selectedStore}
           activeTab={activeTab}
           selectedSection={selectedSection}
+          setSelectedSection={setSelectedSection}
         />
       </Box>
 

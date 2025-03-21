@@ -47,7 +47,7 @@ export const settingSections = [
   { id: 'Spacing', label: 'Spacing' }
 ];
 
-const SettingsContent = ({ activeSetting = 'colors' }) => {
+const SettingsContent = ({ section }) => {
   const [storefront, setStorefront] = useState('Wonder Worlds');
   const [primaryColor, setPrimaryColor] = useState('#005FB8');
   const [secondaryColor, setSecondaryColor] = useState('#62B6CB');
@@ -191,40 +191,42 @@ const SettingsContent = ({ activeSetting = 'colors' }) => {
   );
 
   const renderContent = () => {
-    switch (activeSetting) {
-      case 'colors':
+    switch (section) {
+      case 'Storefront Colors':
         return (
-          <Grid container spacing={1}>
-            <Grid item xs={12} md={10}>
-              <ColorSetting label="Primary Color" color={primaryColor} type="primary" />
+          <Box sx={{width:"100%", overflowX: "auto",whiteSpace: "nowrap"}}>
+            <Grid container spacing={1} sx={{width:"1100px"}}>
+              <Grid item xs={12} md={10}>
+                <ColorSetting label="Primary Color" color={primaryColor} type="primary" />
+              </Grid>
+              <Grid item xs={12} md={10}>
+                <ColorSetting label="Secondary Color" color={secondaryColor} type="secondary" />
+              </Grid>
+              <Grid item xs={12} md={10}>
+                <ColorSetting label="Neutral Color" color={neutralColor} type="neutral" />
+              </Grid>
+              <Grid item xs={12} md={10}>
+                <ColorSetting label="Main Text Color" color={mainTextColor} type="mainText" />
+              </Grid>
+              <Grid item xs={12} md={10}>
+                <ColorSetting label="Neutral Text Color" color={neutralTextColor} type="neutralText" />
+              </Grid>
             </Grid>
-            <Grid item xs={12} md={10}>
-              <ColorSetting label="Secondary Color" color={secondaryColor} type="secondary" />
-            </Grid>
-            <Grid item xs={12} md={10}>
-              <ColorSetting label="Neutral Color" color={neutralColor} type="neutral" />
-            </Grid>
-            <Grid item xs={12} md={10}>
-              <ColorSetting label="Main Text Color" color={mainTextColor} type="mainText" />
-            </Grid>
-            <Grid item xs={12} md={10}>
-              <ColorSetting label="Neutral Text Color" color={neutralTextColor} type="neutralText" />
-            </Grid>
-          </Grid>
+          </Box>
         );
-      case 'buttons':
+      case 'Button Styles':
         return (
           <Box>
             <Typography>Button Styles settings will go here</Typography>
           </Box>
         );
-      case 'typography':
+      case 'Typography':
         return (
           <Box>
             <Typography>Typography settings will go here</Typography>
           </Box>
         );
-      case 'spacing':
+      case 'Spacing':
         return (
           <Box>
             <Typography>Spacing settings will go here</Typography>
@@ -237,11 +239,11 @@ const SettingsContent = ({ activeSetting = 'colors' }) => {
 
   // Map setting labels to display names
   const getSettingLabel = () => {
-    switch (activeSetting) {
-      case 'colors': return 'Storefront Colors';
-      case 'buttons': return 'Button Styles';
-      case 'typography': return 'Typography';
-      case 'spacing': return 'Spacing';
+    switch (section) {
+      case 'Storefront Colors': return 'Storefront Colors';
+      case 'Button Styles': return 'Button Styles';
+      case 'Typography': return 'Typography';
+      case 'Spacing': return 'Spacing';
       default: return 'Settings';
     }
   };
@@ -280,8 +282,7 @@ const SettingsContent = ({ activeSetting = 'colors' }) => {
   });
   
   return (
-    <Box sx={{ p: 0 }}>
-      <Typography variant="h3" sx={{ mb: 0.5, fontWeight: 'bold', fontSize: '18px' }}>{getSettingLabel()}</Typography>
+    <Box sx={{ pt: 1 }}>
       {renderContent()}
 
       <Dialog 
